@@ -44,7 +44,7 @@ export default {
 
 <template>
     <div class="card my-4">
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <img v-if="project.image" :src="project.image" class="card-img-top img-fluid" :alt="project.slug">
         <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
             <p class="card-text">
