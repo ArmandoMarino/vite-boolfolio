@@ -44,7 +44,7 @@ export default {
 
 <template>
     <div class="card my-4">
-        <img src="..." class="card-img-top" alt="...">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
         <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
             <p class="card-text">
