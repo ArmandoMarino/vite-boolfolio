@@ -62,6 +62,6 @@ export default {
     <app-loader v-if="isLoading"></app-loader>
     <!-- ALtrimenti v-else vai vedere la projectsList -->
     <projects-list v-else :projects="projects.data"></projects-list>
-    <app-pagination :links="projects.links" @change-page="fetchProjects"></app-pagination>
+    <app-pagination v-if="isLoading" :links="projects.links" @change-page="fetchProjects"></app-pagination>
   </main>
 </template>
