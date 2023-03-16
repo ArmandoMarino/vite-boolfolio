@@ -4,4 +4,6 @@ export default {
 }
 </script>
 
-<template></template>
+<template>
+    <h1>ContactPage is here!</h1>
+</template>
