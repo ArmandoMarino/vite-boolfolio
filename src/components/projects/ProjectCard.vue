@@ -50,9 +50,13 @@ export default {
         <img v-if="project.image" :src="project.image" class="card-img-top img-fluid" :alt="project.slug">
         <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
-            <span v-if="project.type" class="badge" :style="{ backgroundColor: project.type.color }">
-                {{ project.type.label }}
-            </span>
+            <!-- TYPE -->
+            <!-- da router  il v-if qui è MOLTO importante -->
+            <router-link v-if="project.type" :to="{ name: 'type-projects', params: { id: project.type.id } }">
+                <span class="badge" :style="{ backgroundColor: project.type.color }">
+                    {{ project.type.label }}
+                </span>
+            </router-link>
             <!-- ABSTRACT | DESCRIPTION -->
             <p class="card-text">
                 {{ isDetail ? project.description : abstractDescription }}

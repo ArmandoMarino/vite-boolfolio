@@ -5,6 +5,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from '../pages/HomePage.vue';
 import ContactPage from '../pages/ContactPage.vue';
 import ProjectDetailPage from '../pages/projects/ProjectDetailPage.vue';
+import TypeProjectsPage from '../pages/projects/TypeProjectsPage.vue';
 
 import NotFoundPage from '../pages/NotFoundPage.vue';
 
@@ -20,10 +21,14 @@ const router = createRouter({
     routes: [
         { path: '/', name: 'home', component: HomePage },
         { path: '/contact', name: 'contact', component: ContactPage },
+
         //Rotta per lo show del Project con slug invece che id (scelte)
         { path: '/projects/:slug', name: 'project-detail', component: ProjectDetailPage },
 
-        // La funzione pathMatch con la * prende qualsiasi cosa diversa e redirect alla 404 page
+        //Rotta per il recupero dei projects appartenenti a un type
+        { path: '/types/:id/projects', name: 'type-projects', component: TypeProjectsPage },
+
+        // La funzione pathM        { path: '/projects/:slug', name: 'project-detail', component: ProjectDetailPage },
         { path: '/:pathMatch(.*)*', name: 'NotFoundPage', component: NotFoundPage },
 
     ]
