@@ -50,13 +50,24 @@ export default {
         <img v-if="project.image" :src="project.image" class="card-img-top img-fluid" :alt="project.slug">
         <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
+            <span v-if="project.type" class="badge" :style="{ backgroundColor: project.type.color }">
+                {{ project.type.label }}
+            </span>
+            <!-- ABSTRACT | DESCRIPTION -->
             <p class="card-text">
                 {{ isDetail ? project.description : abstractDescription }}
             </p>
             <div class="card-footer d-flex justify-content-between align-items-center">
-                <p>Pubblicated at : {{ projectDateCreated }}</p>
+                <!-- UPDATED & PUBLISHED -->
+                <p>Pubblished at : {{ projectDateCreated }}</p>
                 <p>Updated at : {{ projectDateUpdated }}</p>
-                <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
+                <!-- TECHNOLOGIES -->
+                <span v-for="technology in project.technologies" :style="{ backgroundColor: project.type.color }"
+                    :class="`text-bg-${technology.color}`" :key="technology.id" class="badge">
+                    {{ technology.label }}
+                </span>
+                <!-- BUTTON TO DETAILS -->
+                <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { slug: project.slug } }"
                     class="btn btn-primary">
                     Show details
                 </router-link>
