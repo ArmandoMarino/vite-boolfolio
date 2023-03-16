@@ -20,8 +20,8 @@ const router = createRouter({
     routes: [
         { path: '/', name: 'home', component: HomePage },
         { path: '/contact', name: 'contact', component: ContactPage },
-        //Rotta per lo show del Project
-        { path: '/projects/:id', name: 'project-detail', component: ProjectDetailPage },
+        //Rotta per lo show del Project con slug invece che id (scelte)
+        { path: '/projects/:slug', name: 'project-detail', component: ProjectDetailPage },
 
         // La funzione pathMatch con la * prende qualsiasi cosa diversa e redirect alla 404 page
         { path: '/:pathMatch(.*)*', name: 'NotFoundPage', component: NotFoundPage },

@@ -14,8 +14,8 @@ export default {
     methods: {
         getProject() {
             this.isLoading = true;
-            // L'id del project lo passa Router come specificato nella rotta
-            const endpoint = apiBaseUrl + '/projects/' + this.$route.params.id;
+            // Lo slug del project lo passa Router come specificato nella rotta
+            const endpoint = apiBaseUrl + '/projects/' + this.$route.params.slug;
             axios.get(endpoint).then(res => {
                 this.project = res.data;
             }).catch(err => {
