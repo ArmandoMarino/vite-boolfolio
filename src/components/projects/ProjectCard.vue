@@ -1,7 +1,10 @@
 <script>
 export default {
     name: 'ProjectCard',
-    props: { project: Object },
+    props: {
+        project: Object,
+        isDetail: Boolean,
+    },
     computed: {
         projectDateUpdated() {
             const date = new Date(this.project.updated_at);
@@ -48,12 +51,15 @@ export default {
         <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
             <p class="card-text">
-                {{ abstractDescription }}
+                {{ isDetail ? project.description : abstractDescription }}
             </p>
             <div class="card-footer d-flex justify-content-between align-items-center">
                 <p>Pubblicated at : {{ projectDateCreated }}</p>
                 <p>Updated at : {{ projectDateUpdated }}</p>
-                <a href="#" class="btn btn-primary">Show details</a>
+                <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
+                    class="btn btn-primary">
+                    Show details
+                </router-link>
             </div>
         </div>
     </div>
