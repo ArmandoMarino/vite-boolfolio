@@ -53,12 +53,10 @@ export default {
 </script>
 
 <template>
-    <main class="container">
-        <app-alert :is-open="isALertOpen" @close="isALertOpen = false"></app-alert>
-        <!-- AppLoader importato globalmente in main.js si vedrà (v-if) solo se isLoading sarà true -->
-        <app-loader v-if="isLoading"></app-loader>
-        <!-- ALtrimenti v-else vai vedere la projectsList -->
-        <projects-list v-else :projects="projects.data"></projects-list>
-        <app-pagination v-if="isLoading" :links="projects.links" @change-page="fetchProjects"></app-pagination>
-    </main>
+    <app-alert :is-open="isALertOpen" @close="isALertOpen = false"></app-alert>
+    <!-- AppLoader importato globalmente in main.js si vedrà (v-if) solo se isLoading sarà true -->
+    <app-loader v-if="isLoading"></app-loader>
+    <!-- ALtrimenti v-else vai vedere la projectsList -->
+    <projects-list v-else :projects="projects.data"></projects-list>
+    <app-pagination v-if="isLoading" :links="projects.links" @change-page="fetchProjects"></app-pagination>
 </template>
