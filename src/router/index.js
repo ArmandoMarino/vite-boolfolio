@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 // Importo le pagine che voglio usare
 import HomePage from '../pages/HomePage.vue';
 import ContactPage from '../pages/ContactPage.vue';
+import NotFoundPage from '../pages/NotFoundPage.vue';
 
 // Creo il Router e definisco le rotte
 const router = createRouter({
@@ -13,6 +14,8 @@ const router = createRouter({
     routes: [
         { path: '/', name: 'home', component: HomePage },
         { path: '/contact', name: 'contact', component: ContactPage },
+        // La funzione pathMatch con la * prende qualsiasi cosa diversa e redirect alla 404 page
+        { path: '/:pathMatch(.*)*', name: 'NotFoundPage', component: NotFoundPage },
 
     ]
 });
