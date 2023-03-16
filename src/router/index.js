@@ -10,6 +10,8 @@ import NotFoundPage from '../pages/NotFoundPage.vue';
 const router = createRouter({
     // History delle pagine
     history: createWebHistory(),
+    // Importo la classe da avere in active
+    linkExactActiveClass: 'active',
     // Rotte che useremo
     routes: [
         { path: '/', name: 'home', component: HomePage },
