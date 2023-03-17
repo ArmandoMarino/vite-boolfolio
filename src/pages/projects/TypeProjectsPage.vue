@@ -17,7 +17,10 @@ export default {
         isLoading: false,
         isALertOpen: false,
         // Mettere tutto sotto la stessa chiave cosi con il Destructuring(sotto) prenderò gli elementi parlanti es : project.links
-        projects: [],
+        projects: {
+            data: [],
+            links: []
+        },
         type: null,
     }),
     methods: {
@@ -28,9 +31,9 @@ export default {
             if (!endpoint) endpoint = `${apiBaseUrl}/types/${this.$route.params.id}/projects`;
             axios.get(endpoint).then(res => {
                 // In res.data arrivano i dati della chiamata da axios 
-                this.projects = res.data.projects;
-                this.type = res.data.type;
-                console.log(this.projects);
+                const { type, projects } = res.data;
+                this.projects = projects;
+                this.type = type;
 
             })
                 // Controllo con catch se ci sono errori e nel caso l'alert sarà true (on)
@@ -57,6 +60,6 @@ export default {
     <h3>{{ type?.label }} Projects</h3>
     <app-loader v-if="isLoading"></app-loader>
     <!-- ALtrimenti v-else vai vedere la projectsList -->
-    <projects-list v-else :projects="projects"></projects-list>
+    <projects-list v-else :projects="projects.data"></projects-list>
     <app-pagination v-if="!isLoading" :links="projects.links" @change-page="fetchProjects"></app-pagination>
 </template>
